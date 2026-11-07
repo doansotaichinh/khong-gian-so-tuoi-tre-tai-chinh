@@ -77,21 +77,12 @@
 
     <section class="section soft" id="tom-tat">
       <div class="container">
-        <div class="section-heading reveal"><span class="eyebrow">Nội dung trọng tâm</span><h2>Tóm tắt Luật Phát triển đô thị</h2><p>Cấu trúc mẫu để biên tập viên cập nhật sau khi văn bản chính thức và nội dung chuyên môn được phê duyệt.</p></div>
+        <div class="section-heading reveal"><span class="eyebrow">Nội dung trọng tâm</span><h2>Tóm tắt Luật Phát triển đô thị</h2><p>Các nhóm nội dung chính của Luật số 18/2026/QH16, kèm căn cứ pháp lý và ngày cập nhật.</p></div>
         <div class="law-layout">
-          <div class="tabs reveal" role="tablist" aria-label="Nhóm nội dung Luật">
-            <button role="tab" aria-selected="true" data-tab="pham-vi">Phạm vi điều chỉnh</button>
-            <button role="tab" aria-selected="false" data-tab="doi-tuong">Đối tượng áp dụng</button>
-            <button role="tab" aria-selected="false" data-tab="quy-dinh">Nhóm quy định cần biết</button>
-            <button role="tab" aria-selected="false" data-tab="tai-chinh">Liên hệ ngành Tài chính</button>
-          </div>
-          <div class="tab-panels reveal">
-            <article id="pham-vi" class="tab-panel active" role="tabpanel"><span class="tag">Nội dung chờ phê duyệt</span><h3>Phạm vi điều chỉnh</h3><p>Trình bày khái quát các quan hệ, hoạt động và vấn đề được Luật điều chỉnh. Nội dung chính thức cần được đối chiếu trực tiếp với văn bản có hiệu lực.</p><div class="legal-source"><b>Căn cứ pháp lý:</b> cập nhật số, ký hiệu, điều khoản và đường dẫn văn bản chính thức.</div></article>
-            <article id="doi-tuong" class="tab-panel" role="tabpanel"><span class="tag">Nội dung chờ phê duyệt</span><h3>Đối tượng áp dụng</h3><p>Nhận diện cơ quan, tổ chức, doanh nghiệp, cộng đồng dân cư và cá nhân thuộc phạm vi áp dụng theo quy định chính thức.</p><div class="legal-source"><b>Căn cứ pháp lý:</b> bổ sung sau khi rà soát chuyên môn.</div></article>
-            <article id="quy-dinh" class="tab-panel" role="tabpanel"><span class="tag">Nội dung chờ phê duyệt</span><h3>Nhóm quy định cần biết</h3><p>Hệ thống hóa theo chủ đề để thuận tiện tra cứu: quy hoạch và phát triển đô thị; chương trình, dự án; nguồn lực; quản lý, giám sát và trách nhiệm thực hiện.</p><div class="legal-source"><b>Lưu ý:</b> tóm tắt không thay thế văn bản quy phạm pháp luật.</div></article>
-            <article id="tai-chinh" class="tab-panel" role="tabpanel"><span class="tag">Góc nhìn chuyên môn</span><h3>Liên hệ với ngành Tài chính</h3><p>Gợi mở các vấn đề liên quan đến quản lý tài chính công, đầu tư công, huy động và sử dụng nguồn lực phát triển đô thị trong phạm vi chức năng, nhiệm vụ được giao.</p><div class="legal-source"><b>Lưu ý:</b> nội dung không thay thế hướng dẫn nghiệp vụ chính thức.</div></article>
-          </div>
+          <div class="tabs reveal" id="tomTatTabs" role="tablist" aria-label="Nhóm nội dung Luật"></div>
+          <div class="tab-panels reveal" id="tomTatPanels"></div>
         </div>
+        <p class="data-note">Nội dung tóm tắt chỉ mang tính tham khảo, không thay thế văn bản quy phạm pháp luật. Tra cứu văn bản gốc tại mục <a href="#tai-lieu">Tài liệu tham khảo</a>.</p>
       </div>
     </section>
 
@@ -123,12 +114,8 @@
           <label class="search-box"><span>⌕</span><input id="resourceSearch" type="search" placeholder="Tìm theo tên tài liệu hoặc cơ quan ban hành..." aria-label="Tìm tài liệu"></label>
           <select id="resourceFilter" aria-label="Lọc loại tài liệu"><option value="all">Tất cả tài liệu</option><option value="van-ban">Văn bản pháp luật</option><option value="huong-dan">Tài liệu hướng dẫn</option><option value="chuyen-de">Tài liệu chuyên đề</option></select>
         </div>
-        <div class="resource-list" id="resourceList">
-          <article data-type="van-ban" data-keywords="luật phát triển đô thị văn bản chính thức"><div class="file-icon">VB</div><div><span class="meta">Văn bản pháp luật</span><h3>Luật Phát triển đô thị - văn bản chính thức</h3><p>Nguồn: bổ sung từ cơ sở dữ liệu văn bản chính thức · Cập nhật: chờ xác nhận</p></div><button data-toast="Chưa thiết lập đường dẫn nguồn chính thức.">Truy cập ↗</button></article>
-          <article data-type="huong-dan" data-keywords="hướng dẫn triển khai tài chính"><div class="file-icon">HD</div><div><span class="meta">Tài liệu hướng dẫn</span><h3>Tài liệu triển khai và văn bản liên quan</h3><p>Nguồn: cơ quan có thẩm quyền · Cập nhật: chờ phê duyệt</p></div><button data-toast="Chưa thiết lập đường dẫn tài liệu.">Truy cập ↗</button></article>
-          <article data-type="chuyen-de" data-keywords="chuyên đề tài chính công đầu tư công nguồn lực"><div class="file-icon">CĐ</div><div><span class="meta">Tài liệu chuyên đề</span><h3>Chuyên đề tài chính công và nguồn lực phát triển đô thị</h3><p>Nguồn: tài liệu đã được duyệt · Cập nhật: chờ phê duyệt</p></div><button data-toast="Chưa thiết lập đường dẫn tài liệu.">Truy cập ↗</button></article>
-          <p class="empty-state" hidden>Không tìm thấy tài liệu phù hợp.</p>
-        </div>
+        <div class="resource-list" id="resourceList"></div>
+        <p class="empty-state" hidden>Không tìm thấy tài liệu phù hợp.</p>
       </div>
     </section>
 
@@ -150,13 +137,14 @@
 
   <footer>
     <div class="container footer-grid"><div><a class="brand footer-brand" href="#top"><span class="brand-mark">TF</span><span><strong>Tuổi trẻ Tài chính</strong><small>Với Luật Phát triển đô thị</small></span></a><p>Công trình phục vụ tuyên truyền, phổ biến và tìm hiểu pháp luật. Nội dung không thay thế văn bản chính thức hoặc hướng dẫn nghiệp vụ.</p></div><div><h3>Chuyên mục</h3><a href="#tom-tat">Tóm tắt Luật</a><a href="#infographic">Infographic</a><a href="#goc-nhin">Góc nhìn Tài chính</a></div><div><h3>Thông tin</h3><a href="#huong-dan">Hướng dẫn sử dụng</a><a href="#tai-lieu">Tài liệu tham khảo</a><a href="#gop-y">Hòm thư góp ý</a></div></div>
-    <div class="container footer-bottom"><span>© 2026 Không gian số Tuổi trẻ Tài chính</span><span>Phiên bản mẫu 1.0</span></div>
+    <div class="container footer-bottom"><span>© 2026 Không gian số Tuổi trẻ Tài chính</span><span>Phiên bản 1.1</span></div>
   </footer>
 
   <div class="modal" id="submitModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card"><button class="modal-close" aria-label="Đóng">×</button><span class="eyebrow">Diễn đàn Chi đoàn</span><h2 id="modalTitle">Gửi nội dung đóng góp</h2><p>Trong bản triển khai chính thức, nút này sẽ dẫn đến biểu mẫu tiếp nhận được phê duyệt. Hồ sơ nên gồm tiêu đề, nội dung, tác giả/đơn vị, nguồn dẫn và tệp minh họa (nếu có).</p><button class="button primary modal-close-action">Đã hiểu</button></div>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/noi-dung.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
