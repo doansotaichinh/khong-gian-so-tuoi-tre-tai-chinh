@@ -45,7 +45,7 @@ function buildTaiLieu(){
   box.innerHTML=TAI_LIEU.map(d=>{
     const links=(d.lienKet||[]).length
       ? `<div class="resource-links">${d.lienKet.map(l=>`<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.nhan)} ↗</a>`).join('')}</div>`
-      : '<p class="pending">Đang chờ bổ sung đường dẫn chính thức.</p>';
+      : '<p class="pending">Đang cập nhật đường dẫn chính thức.</p>';
     return `<article data-type="${escapeHtml(d.loai)}" data-keywords="${escapeHtml(d.tieuDe+' '+d.nguon)}">
       <div class="file-icon">${escapeHtml(d.ma)}</div>
       <div>

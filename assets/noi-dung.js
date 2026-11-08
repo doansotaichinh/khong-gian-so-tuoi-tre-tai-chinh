@@ -159,7 +159,7 @@ const TAI_LIEU = [
     ma: "LTD",
     nhanLoai: "Văn bản liên quan",
     tieuDe: "Luật Thủ đô",
-    nguon: "Áp dụng đối với thành phố Hà Nội theo quy định tại Luật Phát triển đô thị",
+    nguon: "Văn bản áp dụng đối với thành phố Hà Nội theo quy định tại Luật Phát triển đô thị",
     capNhat: "07/11/2026",
     lienKet: [
       { nhan: "Tra cứu tại Cổng Thông tin điện tử Chính phủ", url: "https://chinhphu.vn" }
@@ -169,7 +169,7 @@ const TAI_LIEU = [
     loai: "huong-dan",
     ma: "HD",
     nhanLoai: "Tài liệu hướng dẫn",
-    tieuDe: "Tài liệu triển khai và văn bản hướng dẫn thi hành Luật",
+    tieuDe: "Văn bản hướng dẫn thi hành Luật Phát triển đô thị",
     nguon: "Cơ quan có thẩm quyền · Cập nhật khi có văn bản mới",
     capNhat: "07/11/2026",
     lienKet: []
@@ -179,7 +179,7 @@ const TAI_LIEU = [
     ma: "CĐ",
     nhanLoai: "Tài liệu chuyên đề",
     tieuDe: "Chuyên đề tài chính công và nguồn lực phát triển đô thị",
-    nguon: "Tài liệu chuyên môn đã được duyệt",
+    nguon: "Do Đoàn Sở Tài chính biên soạn và rà soát",
     capNhat: "07/11/2026",
     lienKet: []
   }
