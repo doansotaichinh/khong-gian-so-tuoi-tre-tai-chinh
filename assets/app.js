@@ -181,3 +181,21 @@ function initInfo(){
 
 buildInfoGrid();
 initInfo();
+
+/* ====== KHU VỰC DỮ LIỆU: GÓC NHÌN TÀI CHÍNH ====== */
+function buildPosts(){
+  const grid=document.getElementById('postGrid');
+  if(!grid||typeof BAI_VIET==='undefined')return;
+  const posts=BAI_VIET.filter(p=>p.trangThai==='da-duyet');
+  const featured=posts.find(p=>p.noiBat)||posts[0];
+  const others=posts.filter(p=>p.id!==featured.id);
+  grid.innerHTML=`<article class="featured-post reveal visible"><span class="tag gold">Bài viết tiêu điểm</span><h3>${escapeHtml(featured.tieuDe)}</h3><p>${escapeHtml(featured.tomTat)}</p><div class="post-meta">${escapeHtml(featured.chuyenMuc)} · ${escapeHtml(featured.thoiGianDoc)} · ${escapeHtml(featured.nhan)}</div><button class="button light-button" data-post="${featured.id}">Đọc bài viết</button></article><aside class="submission reveal visible"><h3>Bài viết khác</h3><div class="post-list">${others.map(p=>`<article class="post-card"><span class="tag gold">${escapeHtml(p.nhan)}</span><h3>${escapeHtml(p.tieuDe)}</h3><p>${escapeHtml(p.tomTat)}</p><button class="button gold-button" data-post="${p.id}">Đọc bài viết</button></article>`).join('')}</div><button class="button gold-button open-modal" data-modal="submitModal" style="margin-top:18px">Gửi nội dung</button></aside>`;
+}
+function openPost(id){
+ const box=document.getElementById('postDetail'); const p=(typeof BAI_VIET!=='undefined')?BAI_VIET.find(x=>x.id===id):null; if(!box||!p)return;
+ const body=(p.noiDung||[]).map(b=>{if(b.loai==='h')return `<h4>${escapeHtml(b.text)}</h4>`; if(b.loai==='h4')return `<h5>${escapeHtml(b.text)}</h5>`; if(b.loai==='ul')return `<ul>${(b.list||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ul>`; return `<p>${escapeHtml(b.text)}</p>`}).join('');
+ box.innerHTML=`<div class="post-head"><button class="post-close" data-post-close="1">Đóng</button><span class="tag status-approved">Đã duyệt</span><h3>${escapeHtml(p.tieuDe)}</h3><p>${escapeHtml(p.chuyenMuc)} · ${escapeHtml(p.thoiGianDoc)} · Cập nhật: ${escapeHtml(p.capNhat)}</p></div><div class="post-body">${body}<div class="thong-diep"><span>Thông điệp nổi bật</span><p>${escapeHtml(p.thongDiep)}</p></div>${p.nguon?`<div class="post-source"><b>Nguồn:</b> ${escapeHtml(p.nguon.replace(/^Nguồn:\s*/,''))}</div>`:''}<div class="mini-legal"><b>Lưu ý:</b> Bài viết là bài phân tích, bình luận chính sách; không thay thế văn bản hướng dẫn thi hành.</div></div>`;
+ box.classList.add('open'); box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function initPosts(){document.addEventListener('click',e=>{const b=e.target.closest('[data-post]'); if(b){openPost(b.dataset.post);return} if(e.target.closest('[data-post-close]')){const box=document.getElementById('postDetail'); if(box)box.classList.remove('open')}})}
+buildPosts();initPosts();
