@@ -95,3 +95,89 @@ buildTomTat();
 buildTaiLieu();
 initTabs();
 initResources();
+
+/* ====== KHU VỰC DỮ LIỆU: PHÁP LUẬT TRỰC QUAN ====== */
+function esc(s){return escapeHtml(s)}
+
+function buildInfoGrid(){
+  const grid=document.getElementById('infoGrid');
+  if(!grid||typeof INFOGRAPHIC==='undefined')return;
+  const duyet=INFOGRAPHIC.filter(i=>i.trangThai==='da-duyet');
+  grid.innerHTML=duyet.map(i=>`<article class="info-card reveal visible" id="card-${i.id}">
+      <div class="visual ${esc(i.lopMau)}"><span>${esc(i.so)}</span></div>
+      <div>
+        <span class="meta">${esc(i.nhan)}</span>
+        <h3>${esc(i.tieuDe)}</h3>
+        <p>${esc(i.tomTat)}</p>
+        <button class="card-link" data-info="${i.id}">${esc(i.nhanLienKet)}</button>
+      </div>
+    </article>`).join('');
+}
+
+function blockHtml(b){
+  if(b.loai==='soLieu'){
+    return `<div class="stat-row">${b.muc.map(m=>`<div><strong>${esc(m.so)}</strong><span>${esc(m.nhan)}</span></div>`).join('')}</div>`;
+  }
+  if(b.loai==='muc'){
+    const items=(b.muc||[]).map(m=>`<li><span class="num">${esc(m.so)}</span><div><b>${esc(m.ten)}</b><p>${esc(m.text)}</p></div></li>`).join('');
+    return `<div class="info-block">${b.tieuDe?`<h4>${esc(b.tieuDe)}</h4>`:''}<ul class="muc-list">${items}</ul></div>`;
+  }
+  if(b.loai==='cacMuc'){
+    const items=(b.muc||[]).map(m=>`<div><b>${esc(m.ten)}</b><span>${esc(m.text)}</span></div>`).join('');
+    return `<div class="info-block">${b.tieuDe?`<h4>${esc(b.tieuDe)}</h4>`:''}<div class="nhan-grid">${items}</div></div>`;
+  }
+  if(b.loai==='buoc'){
+    const items=(b.muc||[]).map(m=>{
+      const lis=(m.text&&m.text.length)?`<ul>${m.text.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+      const out=m.dauRa?`<span class="step-out">${esc(m.dauRa)}</span>`:'';
+      return `<li><span class="num">${esc(m.so)}</span><div><b>${esc(m.ten)}</b>${lis}${out}</div></li>`;
+    }).join('');
+    return `<div class="info-block">${b.tieuDe?`<h4>${esc(b.tieuDe)}</h4>`:''}<ul class="step-list">${items}</ul></div>`;
+  }
+  if(b.loai==='nhan'){
+    const items=(b.muc||[]).map(m=>`<div><b>${esc(m.ten)}</b>${m.text?`<span>${esc(m.text)}</span>`:''}</div>`).join('');
+    return `<div class="info-block">${b.tieuDe?`<h4>${esc(b.tieuDe)}</h4>`:''}<div class="nhan-grid">${items}</div></div>`;
+  }
+  if(b.loai==='thongDiep'){
+    return `<div class="thong-diep"><span>Thông điệp</span><p>${esc(b.text)}</p></div>`;
+  }
+  if(b.loai==='luuY'){
+    return `<div class="info-block"><div class="mini-legal"><b>${esc(b.tieuDe||'Lưu ý')}:</b> ${esc(b.text)}</div></div>`;
+  }
+  return '';
+}
+
+function openInfo(id){
+  const box=document.getElementById('infoDetail');
+  const item=(typeof INFOGRAPHIC!=='undefined')?INFOGRAPHIC.find(i=>i.id===id):null;
+  if(!box||!item)return;
+  const body=(item.khoi||[]).map(blockHtml).join('');
+  const luuY=item.luuY?`<div class="mini-legal" style="margin-top:0"><b>Lưu ý biên tập:</b> ${esc(item.luuY)}</div>`:'';
+  const canCu=item.canCu?`<div class="legal-source"><b>Căn cứ pháp lý:</b> ${esc(item.canCu)}</div>`:'';
+  const so=item.lopMau.replace('mau-','');
+  box.innerHTML=`<div class="info-detail-head bg-${so}">
+      <span class="big">${esc(item.so)}</span>
+      <div><h3>${esc(item.tieuDe)}</h3><p>${esc(item.phuDe||item.tomTat)}</p></div>
+      <button class="info-detail-close" data-close="1">Đóng</button>
+    </div>
+    <div class="info-detail-body">
+      <span class="updated">Cập nhật: ${esc(item.capNhat||'')} · Ghi chú thiết kế: ${esc(item.thietKe||'')}</span>
+      ${body}${luuY}${canCu}
+    </div>`;
+  box.classList.add('open');
+  box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function initInfo(){
+  document.addEventListener('click',e=>{
+    const openBtn=e.target.closest('[data-info]');
+    if(openBtn){openInfo(openBtn.dataset.info);return}
+    if(e.target.closest('[data-close]')){
+      const box=document.getElementById('infoDetail');
+      if(box)box.classList.remove('open');
+    }
+  });
+}
+
+buildInfoGrid();
+initInfo();

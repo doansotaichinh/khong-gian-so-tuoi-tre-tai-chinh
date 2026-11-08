@@ -184,3 +184,146 @@ const TAI_LIEU = [
     lienKet: []
   }
 ];
+
+
+/* --------------------------------------------------------------------------
+   PHAP LUAT TRUC QUAN - INFOGRAPHIC
+   --------------------------------------------------------------------------
+   HUONG DAN CHO ADMIN:
+   - Moi infographic la mot muc trong danh sach INFOGRAPHIC.
+   - Truong "tomTat" la mo ta ngan hien tren the o trang chu.
+   - Truong "thietKe" ghi chu mau sac / huong thiet ke (chi hien thi noi bo).
+   - "khoi": danh sach cac phan ben trong. Cac loai khoi duoc ho tro:
+       "soLieu"  -> { loai, muc: [{so, nhan}] }          o dem so lieu lon
+       "muc"     -> { loai, so, tieuDe, text, canCu }     muc co so thu tu
+       "cacMuc"  -> { loai, tieuDe, muc: [{ten, text}] }  luoi cac muc nho
+       "buoc"    -> { loai, so, tieuDe, muc: [..], dauRa } cac buoc quy trinh
+       "nhan"    -> { loai, tieuDe, muc: [{ten, text}] }  cac tu khoa / nguyen tac
+       "thongDiep" -> { loai, text }                      cau thong diep
+       "luuY"    -> { loai, text }                        ghi chu quan trong
+   - "canCu": can cu phap ly hien o cuoi infographic.
+   - "trangThai": "da-duyet" thi web moi hien.
+   -------------------------------------------------------------------------- */
+
+const INFOGRAPHIC = [
+  {
+    id: "tong-quan",
+    so: "01",
+    nhan: "Tổng quan",
+    lopMau: "mau-1",
+    trangThai: "da-duyet",
+    capNhat: "07/11/2026",
+    tieuDe: "Những nội dung cần biết về phát triển đô thị",
+    tomTat: "Sơ đồ tổng quan 05 chương, 66 điều và các nhóm cơ chế, chính sách trọng tâm.",
+    nhanLienKet: "Xem infographic →",
+    thietKe: "Xanh ngọc – tổng quan, kiến thức.",
+    phuDe: "Quốc hội thông qua ngày 24/8/2026",
+    khoi: [
+      { loai: "soLieu", muc: [ { so: "05", nhan: "Chương" }, { so: "66", nhan: "Điều" } ] },
+      {
+        loai: "muc",
+        tieuDe: "05 chương – 05 nhóm nội dung",
+        muc: [
+          { so: "1", ten: "Chương I – Những quy định chung", text: "Phạm vi điều chỉnh, giải thích từ ngữ, nguyên tắc phân quyền và áp dụng pháp luật." },
+          { so: "2", ten: "Chương II – Cơ chế, chính sách thúc đẩy phát triển đô thị đặc biệt", text: "Tổ chức bộ máy, quy hoạch, kinh tế, xã hội, khoa học công nghệ, tài chính, đầu tư và liên kết vùng." },
+          { so: "3", ten: "Chương III – Cơ chế, chính sách phát triển khu kinh tế đặc biệt", text: "Tổ chức quản lý, đầu tư, đất đai, tài chính, thuế, môi trường và nguồn nhân lực." },
+          { so: "4", ten: "Chương IV – Giám sát, thanh tra, kiểm tra và trách nhiệm giải trình", text: "Trách nhiệm của các cơ quan và chính quyền địa phương." },
+          { so: "5", ten: "Chương V – Điều khoản thi hành", text: "Hiệu lực thi hành và các quy định chuyển tiếp." }
+        ]
+      },
+      {
+        loai: "nhan",
+        tieuDe: "05 định hướng trọng tâm",
+        muc: [
+          { ten: "Phân quyền", text: "Tăng tính chủ động quản lý" },
+          { ten: "Quy hoạch", text: "Phát triển không gian đô thị" },
+          { ten: "Tài chính", text: "Huy động nguồn lực" },
+          { ten: "Đầu tư", text: "Thu hút nguồn vốn phát triển" }
+        ]
+      },
+      { loai: "thongDiep", text: "Hoàn thiện cơ chế, khơi thông nguồn lực, thúc đẩy phát triển đô thị hiện đại và bền vững." }
+    ],
+    canCu: "Luật số 18/2026/QH16, Chương I đến Chương V."
+  },
+  {
+    id: "quy-trinh",
+    so: "02",
+    nhan: "Quy trình",
+    lopMau: "mau-2",
+    trangThai: "da-duyet",
+    capNhat: "07/11/2026",
+    tieuDe: "Từ chủ trương đến triển khai chương trình, dự án",
+    tomTat: "Minh họa các bước xác định dự án, quyết định chủ trương, lựa chọn nhà đầu tư và tổ chức thực hiện.",
+    nhanLienKet: "Xem sơ đồ →",
+    thietKe: "Xanh navy – quy trình, quản lý.",
+    phuDe: "Từ định hướng đầu tư đến tổ chức thực hiện",
+    khoi: [
+      {
+        loai: "buoc",
+        tieuDe: "Quy trình triển khai dự án",
+        muc: [
+          { so: "1", ten: "Xác định và đề xuất dự án", dauRa: "Đầu vào",
+            text: ["Xác định mục tiêu, quy mô và lĩnh vực đầu tư.", "Đánh giá sự phù hợp với quy hoạch, định hướng phát triển.", "Xác định nguồn vốn và tính chất dự án."] },
+          { so: "2", ten: "Xem xét, quyết định chủ trương đầu tư", dauRa: "Quyết định đầu tư",
+            text: ["Xác định thẩm quyền quyết định của HĐND Thành phố, UBND Thành phố hoặc Chủ tịch UBND Thành phố.", "Xem xét nguồn vốn, quy mô và tính chất dự án.", "Thực hiện trình tự, thủ tục theo quy định tương ứng."] },
+          { so: "3", ten: "Lựa chọn nhà đầu tư", dauRa: "Lựa chọn nhà đầu tư",
+            text: ["Xác định hình thức lựa chọn nhà đầu tư.", "Xem xét điều kiện đối với nhà đầu tư chiến lược.", "Thực hiện thủ tục lựa chọn đối với dự án PPP hoặc các dự án thuộc trường hợp áp dụng hình thức tương ứng."] },
+          { so: "4", ten: "Hoàn thiện thủ tục và triển khai", dauRa: "Tổ chức thực hiện",
+            text: ["Thực hiện các thủ tục về đất đai, xây dựng, môi trường.", "Hoàn thiện các điều kiện đầu tư.", "Tổ chức thực hiện và giải ngân theo tiến độ, nghĩa vụ đã cam kết."] },
+          { so: "5", ten: "Theo dõi, kiểm tra và giám sát", dauRa: "Giám sát và đánh giá",
+            text: ["Theo dõi tiến độ thực hiện.", "Kiểm tra việc thực hiện nghĩa vụ của nhà đầu tư.", "Giám sát sử dụng nguồn lực, hiệu quả dự án.", "Thực hiện trách nhiệm giải trình và xử lý các vấn đề phát sinh."] }
+        ]
+      },
+      { loai: "luuY", tieuDe: "Lưu ý quan trọng", text: "Trình tự, thẩm quyền và thủ tục cụ thể phụ thuộc vào loại dự án, nguồn vốn, hình thức đầu tư và các điều kiện pháp luật có liên quan. Sơ đồ trên là mô hình khái quát, không thay thế quy trình pháp lý riêng của từng loại dự án." }
+    ],
+    canCu: "Điều 34, Điều 36 và các quy định có liên quan tại Điều 37, Điều 39 Luật số 18/2026/QH16."
+  },
+  {
+    id: "nguon-luc",
+    so: "03",
+    nhan: "Nguồn lực",
+    lopMau: "mau-3",
+    trangThai: "da-duyet",
+    capNhat: "07/11/2026",
+    tieuDe: "Góc nhìn về nguồn lực tài chính cho đô thị",
+    tomTat: "Khái quát cơ chế ngân sách, trái phiếu, đầu tư công, PPP và thu hút nguồn lực tư nhân.",
+    nhanLienKet: "Xem infographic →",
+    thietKe: "Vàng ánh kim – tài chính, nguồn lực.",
+    phuDe: "Động lực phát triển đô thị · Tài chính – Ngân sách – Đầu tư – Hợp tác công tư",
+    khoi: [
+      {
+        loai: "cacMuc",
+        tieuDe: "01. Các nguồn lực",
+        muc: [
+          { ten: "Ngân sách nhà nước", text: "Nguồn thu ngân sách và cơ chế bổ sung nguồn thu theo Luật." },
+          { ten: "Trái phiếu chính quyền", text: "Huy động vốn phục vụ nhu cầu đầu tư phát triển." },
+          { ten: "Đầu tư tư nhân và PPP", text: "Phát huy nguồn lực xã hội và hợp tác công tư." },
+          { ten: "Nhà đầu tư chiến lược", text: "Thu hút vốn, công nghệ và năng lực quản trị." }
+        ]
+      },
+      {
+        loai: "buoc",
+        tieuDe: "02. Cơ chế quản lý và phân bổ",
+        muc: [
+          { so: "1", ten: "Xác định mục tiêu và ưu tiên đầu tư", text: [] },
+          { so: "2", ten: "Cân đối, phân bổ nguồn lực theo thẩm quyền", text: [] },
+          { so: "3", ten: "Tổ chức thực hiện các chương trình, dự án", text: [] },
+          { so: "4", ten: "Đánh giá hiệu quả sử dụng nguồn lực", text: [] }
+        ]
+      },
+      {
+        loai: "nhan",
+        tieuDe: "03. Nguyên tắc cần bảo đảm",
+        muc: [
+          { ten: "Đúng thẩm quyền", text: "" },
+          { ten: "Công khai, minh bạch", text: "" },
+          { ten: "Hiệu quả, tiết kiệm", text: "" },
+          { ten: "Trách nhiệm giải trình", text: "" }
+        ]
+      },
+      { loai: "thongDiep", text: "Huy động đa dạng nguồn lực – Phân bổ đúng trọng tâm – Sử dụng hiệu quả – Thúc đẩy phát triển đô thị bền vững." }
+    ],
+    canCu: "Điều 33, Điều 34, Điều 35, Điều 36 và các quy định liên quan của Luật số 18/2026/QH16.",
+    luuY: "Infographic này cần đặc biệt làm rõ các quy định tại Điều 33 và Điều 34: Điều 33 có những cơ chế ngân sách cụ thể; Điều 34 quy định thẩm quyền quyết định chủ trương đầu tư và dự án PPP."
+  }
+];
